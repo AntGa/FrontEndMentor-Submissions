@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import QRCODE from './Submissions/QR-CODE';
 import SocialProfile from './Submissions/Social-Profile';
