@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import QRCODE from './Submissions/QR-CODE';
 import SocialProfile from './Submissions/Social-Profile';
+import { TipsCalculator } from './Submissions/TipsCalculator/TipsCalculator';
+import { SubmissionButton } from './components/SubmissionButton';
 
 const Home = () => {
   return (
@@ -25,11 +27,9 @@ function App() {
       {showMenu ? (
         <div className="content">
           <Home />
-          <nav className="menu">
-            <ul>
-              <li><Link to="/QRCODE">QRCODE</Link></li>
-              <li><Link to="/SocialProfile">SocialProfile</Link></li>
-            </ul>
+          <nav className="menu flex flex-col gap-5">
+              <SubmissionButton text='QRCODE'></SubmissionButton>
+              <SubmissionButton text='SocialProfile'></SubmissionButton>
           </nav>
         </div>
       ) : (
