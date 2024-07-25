@@ -33,7 +33,7 @@
   }
   
   .back-button {
-    position: fixed;
+    position: absolute;
     top: 10px;
     right: 10px;
     background-color: #333;
