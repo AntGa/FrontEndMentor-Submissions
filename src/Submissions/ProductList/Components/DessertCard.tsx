@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import '../ProductList.css'
 
 interface DessertCardProps {

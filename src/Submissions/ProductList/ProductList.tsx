@@ -2,7 +2,8 @@ import './ProductList.css'
 import { DessertCard } from './Components/DessertCard'
 import desserts from './desserts.json'
 import { useState } from 'react'
-import CartItem from './Components/CartItem' // Adjust the path as necessary
+import CartItemComponent from './Components/CartItem'
+import OrderConfirmationModal from './Components/ConfirmationModal' // Adjust the path as necessary
 
 interface Dessert {
   category?: string
@@ -13,13 +14,16 @@ interface Dessert {
   }
 }
 
-interface CartItem extends Dessert {
+export interface CartItemType extends Dessert {
   quantity: number
 }
 
 export const ProductList = () => {
-  const [cartItems, setCartItems] = useState<Map<string, CartItem>>(new Map())
+  const [cartItems, setCartItems] = useState<Map<string, CartItemType>>(
+    new Map()
+  )
   const [itemCount, setItemCount] = useState<number>(0)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
   const addToCart = (dessert: Dessert) => {
     setCartItems((prevCartItems) => {
@@ -94,8 +98,18 @@ export const ProductList = () => {
     })
   }
 
-  const totalOrderAmount = Array.from(cartItems.values()).reduce(
-    (acc, item) => acc + (item.price || 0) * item.quantity,
+  const handleOrderConfirm = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setCartItems(new Map())
+    setItemCount(0)
+  }
+
+  const totalPrice = Array.from(cartItems.values()).reduce(
+    (acc, item) => acc + item.price! * item.quantity,
     0
   )
 
@@ -140,7 +154,7 @@ export const ProductList = () => {
             ) : (
               <div className="mt-4 flex flex-col space-y-2">
                 {Array.from(cartItems.values()).map((item, index) => (
-                  <CartItem
+                  <CartItemComponent
                     key={index}
                     name={item.name || ''}
                     quantity={item.quantity}
@@ -148,21 +162,22 @@ export const ProductList = () => {
                     onRemove={() => removeItem(item.name || '')}
                   />
                 ))}
-                <div className="mt-4 flex justify-between">
-                  <p className="text-xl font-semibold">Total</p>
-                  <p className="text-xl font-semibold">
-                    ${totalOrderAmount.toFixed(2)}
-                  </p>
+                <div className="mt-4 flex justify-between font-bold">
+                  <p>Total:</p>
+                  <p>${totalPrice.toFixed(2)}</p>
                 </div>
-                <div className="mt-4 flex h-[50px] w-[337px] items-center justify-center bg-[#E3DAC9]">
+                <div className="bg-beige mt-4 flex h-[50px] w-[337px] items-center justify-center">
                   <img
                     src="ProductList/icon-carbon-neutral.svg"
                     alt="Carbon neutral icon"
-                    className="mr-2 h-6 w-6"
+                    className="mr-2"
                   />
-                  <p className="text-sm">This is a carbon neutral delivery</p>
+                  <p>This is a carbon neutral delivery</p>
                 </div>
-                <button className="mt-4 h-[53px] w-[337px] rounded bg-[#C03D0D] text-white">
+                <button
+                  className="mt-4 h-[53px] w-[337px] rounded-md bg-[#C03D0D] px-4 py-2 text-white"
+                  onClick={handleOrderConfirm}
+                >
                   Confirm Order
                 </button>
               </div>
@@ -170,6 +185,12 @@ export const ProductList = () => {
           </div>
         </div>
       </div>
+      {isModalOpen && (
+        <OrderConfirmationModal
+          cartItems={cartItems}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   )
 }
