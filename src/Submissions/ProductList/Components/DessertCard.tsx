@@ -6,17 +6,22 @@ export const DessertCard = ({
     Name,
     Price,
     ImgSrc,
+    OnAddToCart,
 }: {
     FoodType?: string
     Name?: string
     Price?: number
     ImgSrc?: string
+    OnAddToCart: () => void
 }) => {
     return (
         <div className="redhat h-[344px] w-[252px]">
             <div className="relative h-[242px] w-[252px]">
                 <img className="rounded-md" src={ImgSrc}></img>
-                <button className="absolute h-11 w-40 -translate-y-5 translate-x-11 rounded-full border border-[#98908E] bg-white">
+                <button
+                    onClick={OnAddToCart}
+                    className="absolute h-11 w-40 -translate-y-5 translate-x-11 rounded-full border border-[#98908E] bg-white"
+                >
                     <img
                         className="translate-x-5 translate-y-3"
                         src="ProductList/icon-add-to-cart.svg"

@@ -1,14 +1,32 @@
 import './ProductList.css'
 import { DessertCard } from './Components/DessertCard'
 import desserts from './desserts.json'
-const temp_value: number = 3
+import { useState } from 'react'
+
+interface Dessert {
+    category?: string
+    name?: string
+    price?: number
+    image: {
+        desktop: string
+    }
+}
 
 export const ProductList = () => {
+    const [cartItems, setCartItems] = useState<Dessert[]>([])
+    const [itemCount, setItemCount] = useState<number>(0)
+
+    const addToCart = (dessert: Dessert) => {
+        setCartItems([...cartItems, dessert])
+        setItemCount(itemCount + 1)
+    }
     return (
-        <div className="flex h-dvh w-dvw justify-center bg-white">
-            <div className="flex h-[1320px] w-[1440px] bg-[#FCF8F5] px-28 pt-[86px]">
+        <div className="flex min-h-screen w-full justify-center bg-[#FCF8F5]">
+            <div className="flex w-[1440px] px-28 pt-[88px]">
                 <div className="w-[833px]">
-                    <p className="redhat text-[40px] font-bold">Desserts</p>
+                    <p className="redhat mb-8 text-[40px] font-bold">
+                        Desserts
+                    </p>
                     <div className="flex flex-wrap gap-5">
                         {desserts.map((desserts, index) => (
                             <DessertCard
@@ -17,14 +35,21 @@ export const ProductList = () => {
                                 Name={desserts.name}
                                 ImgSrc={desserts.image.desktop}
                                 Price={desserts.price}
+                                OnAddToCart={() => addToCart(desserts)}
                             />
                         ))}
                     </div>
                 </div>
                 <div>
-                    <div className="h-[300px] w-[390px] rounded-xl bg-white p-6">
+                    <div className="redhat h-[300px] w-[390px] rounded-xl bg-white p-6">
                         <p className="text-2xl font-bold text-[#C03D0D]">
-                            Your Cart ({temp_value})
+                            Your Cart ({itemCount})
+                        </p>
+                        <div className="mt-10 flex justify-center">
+                            <img src="ProductList/illustration-empty-cart.svg" />
+                        </div>
+                        <p className="my-4 text-center font-semibold text-[#7E7371]">
+                            Your added items will appear here
                         </p>
                     </div>
                 </div>
