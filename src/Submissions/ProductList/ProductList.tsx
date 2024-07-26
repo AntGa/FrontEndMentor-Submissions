@@ -21,7 +21,6 @@ export const ProductList = () => {
   const [itemCount, setItemCount] = useState<number>(0)
 
   const addToCart = (dessert: Dessert) => {
-    console.log('Adding to cart:', dessert.name)
     setCartItems((prevCartItems) => {
       const newCartItems = new Map(prevCartItems)
       if (newCartItems.has(dessert.name || '')) {
@@ -42,20 +41,62 @@ export const ProductList = () => {
       return newCartItems
     })
   }
+
+  const incrementItem = (name: string) => {
+    setCartItems((prevCartItems) => {
+      const newCartItems = new Map(prevCartItems)
+      if (newCartItems.has(name)) {
+        const existingItem = newCartItems.get(name)!
+        existingItem.quantity += 1
+        newCartItems.set(name, existingItem)
+      }
+      const newItemCount = Array.from(newCartItems.values()).reduce(
+        (acc, item) => acc + item.quantity,
+        0
+      )
+      setItemCount(newItemCount)
+      return newCartItems
+    })
+  }
+
+  const decrementItem = (name: string) => {
+    setCartItems((prevCartItems) => {
+      const newCartItems = new Map(prevCartItems)
+      if (newCartItems.has(name)) {
+        const existingItem = newCartItems.get(name)!
+        if (existingItem.quantity > 1) {
+          existingItem.quantity -= 1
+          newCartItems.set(name, existingItem)
+        } else {
+          newCartItems.delete(name)
+        }
+      }
+      const newItemCount = Array.from(newCartItems.values()).reduce(
+        (acc, item) => acc + item.quantity,
+        0
+      )
+      setItemCount(newItemCount)
+      return newCartItems
+    })
+  }
+
   return (
     <div className="flex min-h-screen w-full justify-center bg-[#FCF8F5]">
       <div className="flex w-[1440px] px-28 pt-[88px]">
         <div className="w-[833px]">
           <p className="redhat mb-8 text-[40px] font-bold">Desserts</p>
           <div className="flex flex-wrap gap-5">
-            {desserts.map((desserts, index) => (
+            {desserts.map((dessert, index) => (
               <DessertCard
                 key={index}
-                FoodType={desserts.category}
-                Name={desserts.name}
-                ImgSrc={desserts.image.desktop}
-                Price={desserts.price}
-                OnAddToCart={() => addToCart(desserts)}
+                FoodType={dessert.category}
+                Name={dessert.name}
+                ImgSrc={dessert.image.desktop}
+                Price={dessert.price}
+                Count={cartItems.get(dessert.name || '')?.quantity || 0}
+                OnAddToCart={() => addToCart(dessert)}
+                OnIncrement={() => incrementItem(dessert.name || '')}
+                OnDecrement={() => decrementItem(dessert.name || '')}
               />
             ))}
           </div>
