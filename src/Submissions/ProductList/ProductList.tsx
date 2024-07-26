@@ -2,6 +2,7 @@ import './ProductList.css'
 import { DessertCard } from './Components/DessertCard'
 import desserts from './desserts.json'
 import { useState } from 'react'
+import CartItem from './Components/CartItem' // Adjust the path as necessary
 
 interface Dessert {
   category?: string
@@ -80,6 +81,24 @@ export const ProductList = () => {
     })
   }
 
+  const removeItem = (name: string) => {
+    setCartItems((prevCartItems) => {
+      const newCartItems = new Map(prevCartItems)
+      newCartItems.delete(name)
+      const newItemCount = Array.from(newCartItems.values()).reduce(
+        (acc, item) => acc + item.quantity,
+        0
+      )
+      setItemCount(newItemCount)
+      return newCartItems
+    })
+  }
+
+  const totalOrderAmount = Array.from(cartItems.values()).reduce(
+    (acc, item) => acc + (item.price || 0) * item.quantity,
+    0
+  )
+
   return (
     <div className="flex min-h-screen w-full justify-center bg-[#FCF8F5]">
       <div className="flex w-[1440px] px-28 pt-[88px]">
@@ -121,20 +140,31 @@ export const ProductList = () => {
             ) : (
               <div className="mt-4 flex flex-col space-y-2">
                 {Array.from(cartItems.values()).map((item, index) => (
-                  <div key={index} className="flex items-center">
-                    <img
-                      className="mr-2 h-16 w-16 rounded-md"
-                      src={item.image.desktop}
-                      alt={item.name}
-                    />
-                    <div>
-                      <p className="text-sm font-semibold text-[#180A07]">
-                        {item.name}
-                      </p>
-                      <p className="text-sm text-[#7E7371]">x{item.quantity}</p>
-                    </div>
-                  </div>
+                  <CartItem
+                    key={index}
+                    name={item.name || ''}
+                    quantity={item.quantity}
+                    price={item.price || 0}
+                    onRemove={() => removeItem(item.name || '')}
+                  />
                 ))}
+                <div className="mt-4 flex justify-between">
+                  <p className="text-xl font-semibold">Total</p>
+                  <p className="text-xl font-semibold">
+                    ${totalOrderAmount.toFixed(2)}
+                  </p>
+                </div>
+                <div className="mt-4 flex h-[50px] w-[337px] items-center justify-center bg-[#E3DAC9]">
+                  <img
+                    src="ProductList/icon-carbon-neutral.svg"
+                    alt="Carbon neutral icon"
+                    className="mr-2 h-6 w-6"
+                  />
+                  <p className="text-sm">This is a carbon neutral delivery</p>
+                </div>
+                <button className="mt-4 h-[53px] w-[337px] rounded bg-[#C03D0D] text-white">
+                  Confirm Order
+                </button>
               </div>
             )}
           </div>

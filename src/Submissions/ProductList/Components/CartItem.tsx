@@ -4,7 +4,7 @@ interface CartItemProps {
   quantity: number
   price: number
   name: string
-  onRemove: () => void // Add a callback for removing the item
+  onRemove: () => void
 }
 
 const CartItem: React.FC<CartItemProps> = ({
