@@ -1,4 +1,4 @@
-import transition from '../../../components/transition'
+import SwipeTransition from '../../../components/Swipetransition'
 function QRCODE() {
   return (
     <>
@@ -18,4 +18,4 @@ function QRCODE() {
   )
 }
 
-export default transition(QRCODE)
+export default SwipeTransition(QRCODE)

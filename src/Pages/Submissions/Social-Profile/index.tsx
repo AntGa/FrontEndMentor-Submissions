@@ -1,5 +1,5 @@
 import { Button } from './Components/Button'
-import transition from '../../../components/transition'
+import SwipeTransition from '../../../components/Swipetransition'
 function SocialProfile() {
   return (
     <>
@@ -31,4 +31,4 @@ function SocialProfile() {
   )
 }
 
-export default transition(SocialProfile)
+export default SwipeTransition(SocialProfile)

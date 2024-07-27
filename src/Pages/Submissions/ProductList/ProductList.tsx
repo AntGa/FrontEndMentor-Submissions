@@ -4,7 +4,7 @@ import desserts from './desserts.json'
 import { useState } from 'react'
 import CartItemComponent from './Components/CartItem'
 import OrderConfirmationModal from './Components/ConfirmationModal' // Adjust the path as necessary
-import transition from '../../../components/transition'
+import SwipeTransition from '../../../components/Swipetransition'
 
 interface Dessert {
   category?: string
@@ -196,4 +196,4 @@ function ProductList() {
   )
 }
 
-export default transition(ProductList)
+export default SwipeTransition(ProductList)

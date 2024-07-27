@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const transition = (OgComponent: any) => {
+const SwipeTransition = (OgComponent: any) => {
   return () => (
     <>
       <motion.div
@@ -22,4 +22,4 @@ const transition = (OgComponent: any) => {
   )
 }
 
-export default transition
+export default SwipeTransition
