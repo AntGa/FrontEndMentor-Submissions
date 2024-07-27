@@ -3,7 +3,10 @@ import { Layout } from '../components/Layout'
 const Home = () => {
   return (
     <Layout>
-      <div></div>
+      <div>
+        Welcome to my page for all my frontendmentor submissions! (I haven't
+        made a landing page)
+      </div>
     </Layout>
   )
 }
