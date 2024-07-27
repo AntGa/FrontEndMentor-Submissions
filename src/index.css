@@ -3,47 +3,67 @@
 @tailwind utilities;
 
 .outfit {
-    font-family: "Outfit", sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
-  .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .welcome-screen {
-    text-align: center;
-    margin-bottom: 20px; /* Add space between welcome screen and menu */
-  }
-  
-  .menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .menu li {
-    margin: 10px 0;
-  }
-  
-  .back-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .back-button:hover {
-    background-color: #0d6efd;
-  }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-screen {
+  text-align: center;
+  margin-bottom: 20px; /* Add space between welcome screen and menu */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  margin: 10px 0;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0d6efd;
+}
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  transform-origin: bottom;
+}
+
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  transform-origin: top;
+}

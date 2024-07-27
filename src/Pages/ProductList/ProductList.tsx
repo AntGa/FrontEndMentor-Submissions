@@ -4,6 +4,7 @@ import desserts from './desserts.json'
 import { useState } from 'react'
 import CartItemComponent from './Components/CartItem'
 import OrderConfirmationModal from './Components/ConfirmationModal' // Adjust the path as necessary
+import transition from '../../components/transition'
 
 interface Dessert {
   category?: string
@@ -18,7 +19,7 @@ export interface CartItemType extends Dessert {
   quantity: number
 }
 
-export const ProductList = () => {
+function ProductList() {
   const [cartItems, setCartItems] = useState<Map<string, CartItemType>>(
     new Map()
   )
@@ -194,3 +195,5 @@ export const ProductList = () => {
     </div>
   )
 }
+
+export default transition(ProductList)
