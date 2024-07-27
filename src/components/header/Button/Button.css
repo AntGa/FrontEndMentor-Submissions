@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
+.el {
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  background-color: #88fff5;
+  color: #153d38;
+
+  &:nth-of-type(2) {
+    background-color: #000000;
+    position: absolute;
+    top: 100%;
+    color: white;
+  }
+
+  &:hover {
+    .perspectiveText {
+      transform: rotateX(90deg);
+      p {
+        &:nth-of-type(1) {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        &:nth-of-type(2) {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.perspectiveText {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  transform-style: preserve-3d;
+
+  p {
+    transition: all 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+    &:nth-of-type(2) {
+      position: absolute;
+      transform: rotateX(-90deg) translateY(9px);
+      transform-origin: bottom center;
+      opacity: 0;
+    }
+  }
+}

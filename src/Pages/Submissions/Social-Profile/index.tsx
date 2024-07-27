@@ -1,6 +1,5 @@
 import { Button } from './Components/Button'
-import transition from '../../components/transition'
-
+import transition from '../../../components/transition'
 function SocialProfile() {
   return (
     <>

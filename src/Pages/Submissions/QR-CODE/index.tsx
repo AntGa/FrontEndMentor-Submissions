@@ -1,4 +1,4 @@
-import transition from '../../components/transition'
+import transition from '../../../components/transition'
 function QRCODE() {
   return (
     <>

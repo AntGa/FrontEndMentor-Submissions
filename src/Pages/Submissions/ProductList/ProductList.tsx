@@ -4,7 +4,7 @@ import desserts from './desserts.json'
 import { useState } from 'react'
 import CartItemComponent from './Components/CartItem'
 import OrderConfirmationModal from './Components/ConfirmationModal' // Adjust the path as necessary
-import transition from '../../components/transition'
+import transition from '../../../components/transition'
 
 interface Dessert {
   category?: string
