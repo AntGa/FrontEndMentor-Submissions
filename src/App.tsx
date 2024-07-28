@@ -5,6 +5,7 @@ import SocialProfile from './Pages/Submissions/Social-Profile'
 import ProductList from './Pages/Submissions/ProductList/ProductList'
 import { AnimatePresence } from 'framer-motion'
 import Home from './Pages/Home'
+import ProductPreview from './Pages/Submissions/ProductPreviewCard/Productpreview'
 function App() {
   const location = useLocation()
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/QRCODE" element={<QRCODE />} />
           <Route path="/SocialProfile" element={<SocialProfile />} />
           <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/ProductPreviewCard" element={<ProductPreview />} />
         </Routes>
       </AnimatePresence>
     </>

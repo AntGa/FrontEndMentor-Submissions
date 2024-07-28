@@ -12,8 +12,8 @@ export const Links = [
     href: '/ProductList',
   },
   {
-    title: 'Empty ',
-    href: '/ProductList',
+    title: 'Product Preview Card ',
+    href: '/ProductPreviewCard',
   },
   {
     title: 'Empty ',

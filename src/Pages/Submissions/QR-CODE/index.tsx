@@ -6,7 +6,7 @@ function QRCODE() {
       <Layout>
         <div className="outfit flex h-dvh w-dvw items-center justify-center bg-[#D5E1EF]">
           <div className="h-[500px] w-[322px] rounded-xl bg-white p-[16px]">
-            <img src="image-qr-code.png" className="rounded-lg"></img>
+            <img src="QRCODE/image-qr-code.png" className="rounded-lg"></img>
             <p className="mt-[22px] text-center text-[22px] font-bold text-slate-700">
               Improve your front-end skills by building projects
             </p>

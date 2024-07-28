@@ -8,7 +8,7 @@ function SocialProfile() {
         <div className="flex h-dvh w-dvw items-center justify-center bg-[#141414]">
           <div className="flex h-[615px] w-[384px] flex-col items-center rounded-lg bg-[#1F1F1F] p-[40px] font-[inter]">
             <img
-              src="avatar-jessica.jpeg"
+              src="SocialProfile/avatar-jessica.jpeg"
               className="h-[90px] w-[90px] rounded-full"
             ></img>
             <p className="mt-[20px] text-[24px] font-medium text-white">
