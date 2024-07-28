@@ -6,6 +6,7 @@ import ProductList from './Pages/Submissions/ProductList/ProductList'
 import { AnimatePresence } from 'framer-motion'
 import Home from './Pages/Home'
 import ProductPreview from './Pages/Submissions/ProductPreviewCard/Productpreview'
+import TipsCalculator from './Pages/Submissions/TipsCalculator/TipsCalculator'
 function App() {
   const location = useLocation()
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/SocialProfile" element={<SocialProfile />} />
           <Route path="/ProductList" element={<ProductList />} />
           <Route path="/ProductPreviewCard" element={<ProductPreview />} />
+          <Route path="/TipsCalculator" element={<TipsCalculator />} />
         </Routes>
       </AnimatePresence>
     </>
