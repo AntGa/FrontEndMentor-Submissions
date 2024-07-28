@@ -12,7 +12,7 @@ function ProductPreview() {
               <picture>
                 <source
                   srcSet="ProductPreviewCard/image-product-mobile.jpg"
-                  media="(max-width: 620px)"
+                  media="(max-width: 640px)"
                 />
                 <img
                   src="ProductPreviewCard/image-product-desktop.jpg"
