@@ -7,7 +7,10 @@ function ProductPreview() {
     <>
       <Layout>
         <div className="flex h-dvh w-dvw items-center justify-center bg-[#F3EAE3]">
-          <div className="flex h-[450px] w-[600px] overflow-hidden rounded-lg bg-white max-sm:h-[667px] max-sm:w-[375px] max-sm:flex-col">
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            className="flex h-[450px] w-[600px] overflow-hidden rounded-lg bg-white max-sm:h-[667px] max-sm:w-[375px] max-sm:flex-col"
+          >
             <div className="w-300 h-full w-full">
               <picture>
                 <source
@@ -50,7 +53,7 @@ function ProductPreview() {
                 </p>
               </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Layout>
     </>
