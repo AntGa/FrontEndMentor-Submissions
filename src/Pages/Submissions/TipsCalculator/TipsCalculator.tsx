@@ -63,8 +63,8 @@ function TipsCalculator() {
     <Layout>
       <div className="SpaceMono flex h-dvh w-dvw flex-col items-center justify-center bg-[#C5E4E7]">
         <img src="TipsCalculator/logo.svg" className="mb-[48px]"></img>
-        <div className="flex h-[480px] w-[920px] justify-between rounded-3xl bg-white p-8">
-          <div className="h-[413px] w-[418px] items-center p-4">
+        <div className="flex h-[480px] w-[920px] justify-between rounded-3xl bg-white p-8 max-sm:h-[1000px] max-sm:w-[440px] max-sm:flex-col">
+          <div className="h-[413px] w-[418px] items-center p-4 max-sm:h-full max-sm:w-full">
             <p className="font-semibold text-[#677979]">Bill</p>
             <div
               className={`mt-2 flex h-[48px] w-[384px] items-center justify-between rounded-md bg-[#F3F8FB] p-[18px] ${
@@ -136,7 +136,7 @@ function TipsCalculator() {
               ></input>
             </div>
           </div>
-          <div className="mx-[26px] flex h-[413px] w-[418px] flex-col rounded-xl bg-[#00474B] px-[26px]">
+          <div className="mx-[26px] flex h-[413px] w-[418px] flex-col rounded-xl bg-[#00474B] px-[26px] max-sm:h-full max-sm:w-full">
             <div className="mt-[58px] flex h-11 w-[331px] justify-between">
               <div className="flex-col">
                 <p className="font-semibold text-white">Tip Amount</p>
