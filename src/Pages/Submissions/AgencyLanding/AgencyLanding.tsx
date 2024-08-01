@@ -1,8 +1,8 @@
-import { useMediaQuery } from './components/UseMediaQuery'
+/* import { useMediaQuery } from './components/UseMediaQuery' */
 import './AgentLanding.css'
 
 function AgencyLanding() {
-  const { isMobile } = useMediaQuery()
+  /*   const { isMobile } = useMediaQuery() */
 
   return (
     <div className="relative w-dvw">
