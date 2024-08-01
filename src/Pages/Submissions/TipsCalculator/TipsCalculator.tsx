@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import SwipeTransition from '../../../components/Swipetransition'
 import './TipsCalculator.css'
 import { motion } from 'framer-motion'
@@ -18,18 +18,18 @@ function TipsCalculator() {
     people: false,
   })
 
-  const handleBillChange = (e) => {
+  const handleBillChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setBill(value)
     setInputErrors((prev) => ({ ...prev, bill: Number(value) < 0 }))
   }
 
-  const handleTipChange = (percentage) => {
+  const handleTipChange = (percentage: number) => {
     setTipPercentage(percentage)
     setInputErrors((prev) => ({ ...prev, customTip: Number(percentage) < 0 }))
   }
 
-  const handleNumberOfPeopleChange = (e) => {
+  const handleNumberOfPeopleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setNumberOfPeople(value)
     setInputErrors((prev) => ({ ...prev, people: Number(value) < 1 }))

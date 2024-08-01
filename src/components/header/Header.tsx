@@ -23,7 +23,7 @@ const variants = {
 export const Header = () => {
   const [isActive, setIsActive] = useState(false)
   return (
-    <div className="header">
+    <div className="header z-49">
       <motion.div
         className="menu"
         variants={variants}
