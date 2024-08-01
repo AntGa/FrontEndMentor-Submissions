@@ -24,8 +24,9 @@ const Home = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
-                      delay: 0.75 + 0.03 * (secondHalf.length - i),
+                      delay: 0.7 + 0.015 * (secondHalf.length - i),
                       duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
                     key={`first-${i}`}
                   >
@@ -39,8 +40,9 @@ const Home = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{
-                      delay: 0.75 + 0.03 * i,
+                      delay: 0.7 + 0.015 * i,
                       duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
                     key={`second-${i}`}
                   >
@@ -52,11 +54,12 @@ const Home = () => {
             <motion.div
               className="rounded-full bg-black"
               initial={{ height: 16, width: 16, opacity: 0 }}
-              animate={{ height: 4, width: 556, opacity: 1 }}
+              animate={{ height: 4, width: 550, opacity: 1 }}
               transition={{
                 delay: 0.75,
                 duration: 0.6,
                 opacity: { duration: 0.6 },
+                ease: [0.22, 1, 0.36, 1],
               }}
             ></motion.div>
           </motion.div>
