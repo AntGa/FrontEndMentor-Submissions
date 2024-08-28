@@ -154,7 +154,7 @@ function ProductList() {
                   </p>
                 </>
               ) : (
-                <div className="mt-4 flex flex-col space-y-2">
+                <div className="space -y-2 mt-4 flex flex-col">
                   {Array.from(cartItems.values()).map((item, index) => (
                     <CartItemComponent
                       key={index}
