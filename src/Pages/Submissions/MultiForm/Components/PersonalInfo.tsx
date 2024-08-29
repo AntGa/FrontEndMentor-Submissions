@@ -4,9 +4,10 @@ interface PersonalInfoFormProps {
   formData: {
     name: string
     email: string
+    phone: string
   }
   updateFormData: (data: {
-    personalInfo: { name: string; email: string }
+    personalInfo: { name: string; email: string; phone: string }
   }) => void
 }
 
@@ -23,32 +24,39 @@ export const PersonalInfo: React.FC<PersonalInfoFormProps> = ({
       },
     })
   }
+
   return (
     <div className="relative flex h-full w-full flex-col">
-      <h1 className="text-[32px] font-bold text-[#102544]">Personal info</h1>
-      <h2 className="font-light text-[#CECFD1]">
+      <h1 className="text-[32px] font-bold text-[#00295B]">Personal info</h1>
+      <h2 className="mb-10 font-light text-[#CECFD1]">
         Please provide your name, email address, and phone number.
       </h2>
       <div>
         <p>Name</p>
         <input
-          className="mb-2 h-12 w-full rounded-lg border"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="mb-5 h-12 w-full rounded-lg border px-4"
           placeholder="e.g Stephen King"
-        ></input>
+        />
         <p>Email Address</p>
         <input
-          className="mb-2 h-12 w-full rounded-lg border"
-          placeholder="e.g Stephen King"
-        ></input>
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="mb-5 h-12 w-full rounded-lg border px-4"
+          placeholder="e.g stephenking@gmail.com"
+        />
         <p>Phone</p>
         <input
-          className="mb-2 h-12 w-full rounded-lg border"
-          placeholder="e.g Stephen King"
-        ></input>
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          className="mb-5 h-12 w-full rounded-lg border px-4"
+          placeholder="e.g +1234567890"
+        />
       </div>
-      <button className="absolute bottom-0 right-0 flex h-12 w-32 items-center justify-center rounded-xl bg-[#052858] text-white">
-        Next Step
-      </button>
     </div>
   )
 }
