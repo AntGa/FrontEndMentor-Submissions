@@ -16,8 +16,9 @@ interface FormData {
     cost: number
   }
   addOns: {
-    newsletter: boolean
-    support: boolean
+    onlineService: boolean
+    largerStorage: boolean
+    customizableProfile: boolean
   }
   summary: {
     agreement: boolean
@@ -29,9 +30,14 @@ export const MultiForm = () => {
   const [formData, setFormData] = useState<FormData>({
     personalInfo: { name: '', email: '', phone: '' },
     plan: { type: '', cost: 0 },
-    addOns: { newsletter: false, support: false },
+    addOns: {
+      onlineService: false,
+      largerStorage: false,
+      customizableProfile: false,
+    },
     summary: { agreement: false },
   })
+  const [isYearly, setIsYearly] = useState<boolean>(false)
 
   const updateFormData = (newData: Partial<FormData>) => {
     setFormData((prevData) => ({
@@ -45,7 +51,22 @@ export const MultiForm = () => {
       formData={formData.personalInfo}
       updateFormData={updateFormData}
     />,
-    <Plan formData={formData.plan} updateFormData={updateFormData} />,
+    <Plan
+      formData={formData.plan}
+      updateFormData={updateFormData}
+      isYearly={isYearly}
+      setIsYearly={setIsYearly}
+    />,
+    <AddOns
+      addOns={formData.addOns}
+      isYearly={isYearly}
+      updateFormData={updateFormData}
+    />,
+    <Summary
+      formData={formData}
+      isYearly={isYearly}
+      setCurrentStage={setCurrentStage}
+    />,
   ]
 
   return (
@@ -58,7 +79,7 @@ export const MultiForm = () => {
           <Sidebar currentIndex={currentStage} />
         </div>
         <div className="relative flex flex-col px-24 pb-7 pt-14 max-md:px-0 max-md:py-0">
-          {stages[currentStage]} {/* Rendering based on current stage */}
+          {stages[currentStage]}
           {currentStage > 0 && (
             <button
               className="text-gray absolute bottom-10 left-10 flex h-12 w-32 items-center justify-center rounded-xl max-md:hidden"

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
+import { useState } from 'react'
 import '../Styling/MultiForm.css'
 
 interface PlanProps {
@@ -7,12 +8,17 @@ interface PlanProps {
     cost: number
   }
   updateFormData: (newData: { plan: { type: string; cost: number } }) => void
+  isYearly: boolean // Add this line
+  setIsYearly: Dispatch<SetStateAction<boolean>> // Add this line
 }
 
-export const Plan = ({ formData, updateFormData }: PlanProps) => {
-  ;` `
-  const [isYearly, setIsYearly] = useState(false)
-  const [selectedPlan, setSelectedPlan] = useState<string>(formData.type) // State to track selected plan
+export const Plan = ({
+  formData,
+  updateFormData,
+  isYearly,
+  setIsYearly,
+}: PlanProps) => {
+  const [selectedPlan, setSelectedPlan] = useState<string>(formData.type)
 
   const handleToggle = () => {
     setIsYearly(!isYearly)
