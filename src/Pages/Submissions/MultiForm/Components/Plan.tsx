@@ -10,6 +10,7 @@ interface PlanProps {
 }
 
 export const Plan = ({ formData, updateFormData }: PlanProps) => {
+  ;` `
   const [isYearly, setIsYearly] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState<string>(formData.type) // State to track selected plan
 
@@ -34,11 +35,11 @@ export const Plan = ({ formData, updateFormData }: PlanProps) => {
       <h2 className="mb-10 font-light text-[#CECFD1]">
         You have the option of monthly or yearly billing.
       </h2>
-      <div className="flex gap-4">
+      <div className="flex gap-4 max-md:flex-col">
         {planData.map((plan) => (
           <div
             key={plan.type}
-            className={`flex cursor-pointer flex-col rounded-lg border p-4 ${
+            className={`flex cursor-pointer rounded-lg border p-4 md:flex-col ${
               selectedPlan === plan.type
                 ? 'border-[#6964A5] bg-[#F8F9FE]'
                 : 'border-[#DBDBDD]'
@@ -52,13 +53,17 @@ export const Plan = ({ formData, updateFormData }: PlanProps) => {
           >
             <img
               src={`MultiForm/icon-${plan.type.toLowerCase()}.svg`}
-              className="mb-10 mr-14"
+              className="h-[40px] w-[40px] max-md:mr-4 md:mb-10 md:mr-14"
               alt={`${plan.type} icon`}
             />
-            <h2 className="font-bold text-[#12233F]">{plan.type}</h2>
-            <p>
-              {isYearly ? `$${plan.yearlyCost}/yr` : `$${plan.monthlyCost}/mo`}
-            </p>
+            <div>
+              <h2 className="font-bold text-[#12233F]">{plan.type}</h2>
+              <p>
+                {isYearly
+                  ? `$${plan.yearlyCost}/yr`
+                  : `$${plan.monthlyCost}/mo`}
+              </p>
+            </div>
           </div>
         ))}
       </div>
@@ -74,7 +79,7 @@ export const Plan = ({ formData, updateFormData }: PlanProps) => {
             />
             <div className="h-7 w-14 rounded-full bg-[#04265B] shadow-inner"></div>
             <div
-              className={`dot absolute left-1 top-[3.5px] h-5 w-5 rounded-full bg-white shadow transition ${
+              className={`dot absolute left-1 top-[4px] h-5 w-5 rounded-full bg-white shadow transition ${
                 isYearly ? 'translate-x-7 transform' : ''
               }`}
             ></div>
