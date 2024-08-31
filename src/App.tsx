@@ -9,6 +9,7 @@ import ProductPreview from './Pages/Submissions/ProductPreviewCard/Productprevie
 import TipsCalculator from './Pages/Submissions/TipsCalculator/TipsCalculator'
 import AgencyLanding from './Pages/Submissions/AgencyLanding/AgencyLanding'
 import { MultiForm } from './Pages/Submissions/MultiForm/MultiForm'
+import { News } from './Pages/Submissions/NewsHomePage/News'
 function App() {
   const location = useLocation()
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/TipsCalculator" element={<TipsCalculator />} />
           <Route path="/AgencyLanding" element={<AgencyLanding />} />
           <Route path="/MultiForm" element={<MultiForm />} />
+          <Route path="/News" element={<News />} />
         </Routes>
       </AnimatePresence>
     </>

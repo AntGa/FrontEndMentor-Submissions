@@ -27,4 +27,8 @@ export const Links = [
     title: 'MultiForm ',
     href: '/MultiForm',
   },
+  {
+    title: 'News Homepage ',
+    href: '/News',
+  },
 ]
